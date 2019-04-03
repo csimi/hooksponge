@@ -1,0 +1,182 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+}
+
+a {
+	color: #337ab7;
+	cursor: pointer;
+}
+
+a:hover {
+	color: #23527c;
+}
+
+p {
+	margin: 10px 0;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	background-color: #101010;
+	color: #9d9d9d;
+}
+
+header h1 {
+	font-size: 18px;
+	font-weight: 400;
+	margin: 10px 20px;
+}
+
+header img {
+	margin: 0 20px 0 0;
+	vertical-align: middle;
+}
+
+.hooksponge,
+.frame {
+	display: flex;
+}
+
+.hooksponge {
+	flex-direction: column;
+	height: 100vh;
+}
+
+.frame {
+	flex-grow: 1;
+}
+
+.events {
+	background-color: #f5f5f5;
+	border-right: 1px solid #dcdcdc;
+	height: 100%;
+	overflow-y: scroll;
+	width: 20%;
+}
+
+.splash,
+.information {
+	width: 80%;
+}
+
+.splash {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	user-select: none;
+}
+
+.method {
+	background-color: #777;
+	border-radius: 2px;
+	color: #fff;
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 1.5;
+	padding: 1px 5px;
+	vertical-align: middle;
+}
+
+.method.get {
+	background-color: #5cb85c;
+}
+
+.method.post {
+	background-color: #5bc0de;
+}
+
+.method.put {
+	background-color: #343a40;
+}
+
+.method.delete {
+	background-color: #d9534f;
+}
+
+.method.patch {
+	background-color: #f0ad4e;
+}
+
+.method.head {
+	background-color: #337ab7;
+}
+
+/**
+ * events
+ */
+
+.events a {
+	display: block;
+}
+
+.events .view-event {
+	line-height: 1.5;
+	padding: 10px 20px;
+}
+
+.events .view-event:hover {
+	background-color: #eee;
+}
+
+.events .active .view-event {
+	background-color: #428bca;
+	color: #fff;
+}
+
+.events p {
+	margin: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/**
+ * information
+ */
+
+.information {
+	padding: 0 20px;
+}
+
+.information h2 {
+	border-bottom: 2px solid #ddd;
+	font-size: 16px;
+	margin: 20px 0 0;
+	padding: 0 0 2px;
+}
+
+.information table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.information tr:nth-of-type(odd) {
+	background-color: #f9f9f9;
+}
+
+.body {
+	margin: 10px 0;
+}
+
+.information th,
+.information td {
+	padding: 3px;
+	vertical-align: top;
+}
+
+.information th {
+	font-weight: 400;
+	text-align: left;
+	width: 20%;
+}
+
+.information td {
+	word-break: break-all;
+}

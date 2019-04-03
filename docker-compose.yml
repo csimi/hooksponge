@@ -1,0 +1,28 @@
+version: "2.3"
+
+services:
+  node:
+    build:
+      context: .
+    entrypoint:
+      - npm
+      - run
+      - dev
+    depends_on:
+      - redis
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/usr/src/app/app
+      - ./src:/usr/src/app/src
+      - ./index.js:/usr/src/app/index.js
+      - ./webpack.config.js:/usr/src/app/webpack.config.js
+    environment:
+      - REDIS_KEY=hooksponge
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+  redis:
+    image: redis:alpine
+    command: redis-server --appendonly no
+    expose:
+      - "6379"

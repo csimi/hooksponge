@@ -1,0 +1,33 @@
+{
+	"presets": [
+		"@babel/preset-env",
+		"@babel/preset-react"
+	],
+	"plugins": [
+		"@babel/plugin-proposal-class-properties",
+		"react-hot-loader/babel",
+	],
+	"env": {
+		"development": {
+			"presets": [
+				[
+					"@babel/preset-react",
+					{
+						"development": true
+					}
+				]
+			]
+		},
+		"production": {
+			"plugins": [
+				"transform-react-remove-prop-types"
+			]
+		},
+		"test": {
+			"plugins": [
+				"istanbul"
+			],
+			"sourceMaps": "both"
+		}
+	}
+}
