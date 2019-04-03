@@ -41,6 +41,7 @@ You can change the settings using environment variables.
 ## BIND_HOST
 
 Type: `String`
+
 Default: `0.0.0.0`
 
 The ip or hostname to bind to.
@@ -48,6 +49,7 @@ The ip or hostname to bind to.
 ## BIND_PORT
 
 Type: `Integer`
+
 Default: `3000`
 
 The port to bind to.
@@ -56,6 +58,7 @@ There is an additional requirement to bind to 80 and 443 in order to intercept r
 ## REDIS_KEY
 
 Type: `String`
+
 Default: `hooksponge`
 
 The redis stream's key.
@@ -63,6 +66,7 @@ The redis stream's key.
 ## REDIS_HOST
 
 Type: `String`
+
 Default: none
 
 The redis server's ip or hostname.
@@ -70,6 +74,7 @@ The redis server's ip or hostname.
 ## REDIS_PORT
 
 Type: `Integer`
+
 Default: `6379`
 
 The redis server's port.
