@@ -86,3 +86,7 @@ The redis server's port.
 - [ ] Delete/purge events
 - [ ] Inline documentation
 - [ ] Tests
+
+# Attribution
+
+The sponge favicon and logo was created by [Twitter for Twemoji](https://github.com/twitter/twemoji) and is licensed under the CC-BY 4.0.
