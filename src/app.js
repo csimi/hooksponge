@@ -17,7 +17,7 @@ const {
 } = require('./config');
 
 app.use(bodyParser.raw({
-	'type': '*/*',
+	'type': () => true,
 }));
 
 if (NODE_ENV === 'production') {
