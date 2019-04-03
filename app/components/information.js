@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import { parse } from 'cookie';
-import { ObjectInspector } from 'react-inspector';
+import { ObjectInspector, DOMInspector } from 'react-inspector';
 import Splash from '../public/splash.png';
+
+const parseErrorNS = (new DOMParser())
+	.parseFromString('<', 'text/xml')
+	.getElementsByTagName('parsererror')[0].namespaceURI;
 
 export function sortByKey (entries = []) {
 	return entries.slice().sort(([key1], [key2]) => {
@@ -18,6 +22,17 @@ export function sortByKey (entries = []) {
 	});
 }
 
+export function saneDOMParser (body) {
+	const doc = (new DOMParser()).parseFromString(body, 'application/xml');
+	
+	const err = doc.getElementsByTagNameNS(parseErrorNS, 'parsererror');
+	if (err.length > 0) {
+		throw new Error(`DOMParser: ${err[0].innerText.split('\n')[0]}`);
+	}
+	
+	return doc;
+}
+
 export default class Event extends Component {
 	static propTypes = {
 		'id': PropTypes.string,
@@ -25,18 +40,43 @@ export default class Event extends Component {
 		'message': PropTypes.object,
 	};
 	
+	state = {
+		'parseBody': true,
+		'expandLevel': 1,
+	};
+	
+	enableParse = () => this.setState({
+		'parseBody': true,
+	});
+	
+	disableParse = () => this.setState({
+		'parseBody': false,
+	});
+	
 	render () {
 		const { timestamp, message } = this.props;
+		const { parseBody, expandLevel } = this.state;
+		
 		const headers = message && message.headers ? sortByKey(Object.entries(message.headers)) : [];
 		const cookies = message && message.headers && message.headers.cookie ? Object.entries(parse(message.headers.cookie)) : [];
 		const query = message && message.query ? sortByKey(Object.entries(message.query)) : [];
 		const body = message && message.body ? (() => {
+			if (!parseBody) {
+				return message.body;
+			}
+			
 			try {
 				const data = JSON.parse(message.body);
-				return <ObjectInspector data={data} />;
+				return <ObjectInspector data={data} expandLevel={expandLevel} />;
 			}
 			catch {
-				return message.body;
+				try {
+					const doc = saneDOMParser(message.body);
+					return <DOMInspector data={doc.documentElement} expandLevel={expandLevel} />;
+				}
+				catch {
+					return message.body;
+				}
 			}
 		})() : '(no body content)';
 		
@@ -117,8 +157,8 @@ export default class Event extends Component {
 					)}
 				</section>
 				<section>
-					<h2>Body</h2>
-					<div className="body">{body}</div>
+					<h2>Body (<a onClick={this.enableParse}>parse</a> - <a onClick={this.disableParse}>raw</a>)</h2>
+					<div className="body"><pre>{body}</pre></div>
 				</section>
 			</div>
 		) : (
