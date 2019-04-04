@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cross-env": "^5.2.0",
     "env-var": "^3.5.0",
     "express": "^4.16.4",
     "express-async-router": "^0.1.15",
@@ -36,7 +37,6 @@
     "babel-loader": "^8.0.5",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "cookie": "^0.3.1",
-    "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
     "date-fns": "^1.30.1",
     "eslint": "^5.16.0",

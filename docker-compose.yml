@@ -4,10 +4,7 @@ services:
   node:
     build:
       context: .
-    entrypoint:
-      - npm
-      - run
-      - dev
+      target: builder
     depends_on:
       - redis
     ports:
