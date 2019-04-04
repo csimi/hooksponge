@@ -26,15 +26,9 @@ if (NODE_ENV === 'production') {
 }
 else {
 	(() => {
-		const webpack = require('webpack');
-		const dev = require('webpack-dev-middleware');
-		const hot = require('webpack-hot-middleware');
-		const config = require('../webpack.config.js');
-		const compiler = webpack(config);
-		
+		const compiler = require('./compiler');
 		app.use(rewrite('/', `/${publicPath}/`));
-		app.use(dev(compiler, config.devServer));
-		app.use(hot(compiler));
+		compiler(app);
 	})();
 }
 

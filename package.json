@@ -36,6 +36,8 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "chokidar": "^2.1.5",
+    "clear-module": "^3.1.0",
     "cookie": "^0.3.1",
     "css-loader": "^2.1.1",
     "date-fns": "^1.30.1",
