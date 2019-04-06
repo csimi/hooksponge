@@ -81,8 +81,8 @@ The redis server's port.
 
 # TODO:
 
-- [ ] Automatic updater
-- [ ] Desktop notifications
+- [x] Automatic updater
+- [x] Desktop notifications
 - [ ] Delete/purge events
 - [ ] Inline documentation
 - [ ] Tests

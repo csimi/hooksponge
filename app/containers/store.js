@@ -3,10 +3,10 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
-import { put } from 'redux-saga/effects';
+import { fork } from 'redux-saga/effects';
 
 import createRootReducer from '../reducers';
-import rootSaga, { SAGAS_REPLACED } from '../sagas';
+import rootSaga, { announceReplacement } from '../sagas';
 
 function createReducer (rootReducer) {
 	return rootReducer();
@@ -39,10 +39,9 @@ export function configureStore (initialState) {
 			sagaTask.cancel();
 			sagaTask.toPromise().then(() => {
 				sagaTask = sagaMiddleware.run(function *replacedSaga () {
-					yield put({
-						'type': SAGAS_REPLACED,
-					});
-					yield replacementSaga();
+					yield replacementSaga([
+						fork(announceReplacement),
+					]);
 				});
 			});
 		});
