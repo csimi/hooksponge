@@ -1,3 +1,5 @@
+[![image version](https://images.microbadger.com/badges/version/csimi/hooksponge.svg)](https://hub.docker.com/r/csimi/hooksponge)
+
 # About
 
 HookSponge was created for inspecting webhook triggers.
