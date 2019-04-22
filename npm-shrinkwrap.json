@@ -883,6 +883,12 @@
         "to-fast-properties": "^2.0.0"
       }
     },
+    "@csimi/eslint-config": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/@csimi/eslint-config/-/eslint-config-1.0.0.tgz",
+      "integrity": "sha512-IU8uUU1T+yF6q6xlpRvL2s87tcVTZ4lajXmQ8gWKcDQT7AGCOWA4Q/z0sgaawcdGtFFZG/Qm8sxgxzwD2ehXlw==",
+      "dev": true
+    },
     "@csstools/convert-colors": {
       "version": "1.4.0",
       "resolved": "https://registry.npmjs.org/@csstools/convert-colors/-/convert-colors-1.4.0.tgz",
