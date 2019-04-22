@@ -6,6 +6,10 @@ export const INIT = {
 	'type': 'app/INIT',
 };
 
+export function *takeLocationChange (action = LOCATION_CHANGE) {
+	yield take(action);
+}
+
 export function *raceTask (task, competingAction = LOCATION_CHANGE) {
 	yield delay();
 	const { value } = yield race({
@@ -19,8 +23,4 @@ export function *raceTask (task, competingAction = LOCATION_CHANGE) {
 	else {
 		yield cancel();
 	}
-}
-
-export function *takeLocationChange (action = LOCATION_CHANGE) {
-	yield take(action);
 }

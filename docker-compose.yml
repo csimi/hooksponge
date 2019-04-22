@@ -12,7 +12,6 @@ services:
     volumes:
       - ./app:/usr/src/app/app
       - ./src:/usr/src/app/src
-      - ./index.js:/usr/src/app/index.js
       - ./webpack.config.js:/usr/src/app/webpack.config.js
     environment:
       - REDIS_KEY=hooksponge

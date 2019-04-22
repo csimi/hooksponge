@@ -14,7 +14,8 @@ function createReducer (rootReducer) {
 
 export function configureStore (initialState) {
 	const sagaMiddleware = createSagaMiddleware();
-	const composeEnhancers = typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+	// eslint-disable-next-line no-underscore-dangle
+	const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 	const enhancer = composeEnhancers(
 		applyMiddleware(
 			thunk,

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node index.js",
     "dev": "cross-env NODE_ENV=development node index.js",
-    "build": "cross-env NODE_ENV=production webpack-cli --mode production",
+    "build": "cross-env NODE_ENV=production webpack-cli -r esm --mode production",
     "lint": "eslint --version && eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,11 +20,13 @@
     "body-parser": "^1.18.3",
     "cross-env": "^5.2.0",
     "env-var": "^3.5.0",
+    "esm": "^3.2.22",
     "express": "^4.16.4",
     "express-async-router": "^0.1.15",
     "express-sse": "^0.5.0",
     "express-urlrewrite": "^1.2.0",
     "ioredis": "^4.9.0",
+    "memoize-one": "^5.0.4",
     "pem": "^1.14.2"
   },
   "devDependencies": {

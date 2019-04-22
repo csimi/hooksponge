@@ -1,9 +1,11 @@
-const webpack = require('webpack');
-const dev = require('webpack-dev-middleware');
-const hot = require('webpack-hot-middleware');
-const config = require('../webpack.config.js');
+import memoizeOne from 'memoize-one';
 
-module.exports = (() => {
+export async function createDecorator () {
+	const webpack = (await import('webpack')).default;
+	const dev = (await import('webpack-dev-middleware')).default;
+	const hot = (await import('webpack-hot-middleware')).default;
+	const config = (await import('../webpack.config.js')).default;
+	
 	const compiler = webpack(config);
 	const devMiddleware = dev(compiler, config.devServer);
 	const hotMiddleware = hot(compiler);
@@ -14,4 +16,10 @@ module.exports = (() => {
 		
 		return app;
 	};
-})();
+}
+
+export function isEqual () {
+	return true;
+}
+
+export default memoizeOne(createDecorator, isEqual);

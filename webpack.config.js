@@ -1,16 +1,18 @@
-const path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HashOutput = require('webpack-plugin-hash-output');
-const SriPlugin = require('webpack-subresource-integrity');
-const {
+import path from 'path';
+import TerserPlugin from 'terser-webpack-plugin';
+import HtmlWebPackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import HashOutput from 'webpack-plugin-hash-output';
+import SriPlugin from 'webpack-subresource-integrity';
+import postcssPresetEnv from 'postcss-preset-env';
+import postcssCSSO from 'postcss-csso';
+import {
 	DefinePlugin,
 	HotModuleReplacementPlugin,
-} = require('webpack');
-const {
+} from 'webpack';
+import {
 	publicPath,
-} = require('./src/config');
+} from './src/config';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -36,7 +38,7 @@ const contentSecurityPolicy = isProduction ? [
 	`object-src 'none'`,
 ];
 
-module.exports = {
+export default {
 	'mode': isProduction ? 'production' : 'development',
 	'entry': {
 		'main': isProduction ? './app/index.js' : [
@@ -126,11 +128,11 @@ module.exports = {
 							'sourceMap': !isProduction,
 							'plugins': () => {
 								const plugins = [
-									require('postcss-preset-env')(),
+									postcssPresetEnv(),
 								];
 								
 								if (isProduction) {
-									plugins.push(require('postcss-csso')({
+									plugins.push(postcssCSSO({
 										'comments': false,
 									}));
 								}
