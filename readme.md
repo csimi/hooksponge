@@ -36,6 +36,24 @@ Add a hooksponge container into your docker-compose file while aliasing the host
       - REDIS_PORT=6379
 ```
 
+# Responder customization
+
+You can use your own responder function so instead of receiving an empty object on calls, you receive a response expected by your application.
+
+Change your docker-compose to mount your responder file as:
+```
+    volumes:
+      - ./myResponder.js:/usr/src/app/src/responder.js
+```
+
+HookSponge expects a function as default export which receives the http request object:
+```
+export default function (req) {
+	// decide response based on req
+	return {};
+}
+```
+
 # Configuration
 
 You can change the settings using environment variables.
