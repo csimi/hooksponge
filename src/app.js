@@ -7,6 +7,7 @@ import env from 'env-var';
 import ioredis from 'ioredis';
 import compiler from './compiler';
 import cache from './cache';
+import responder from './responder';
 import {
 	publicPath,
 	dataPath,
@@ -73,7 +74,7 @@ export function saveData (sse) {
 			})
 			.catch(console.error);
 		
-		return JSON.stringify({});
+		return JSON.stringify(responder(req));
 	};
 }
 
