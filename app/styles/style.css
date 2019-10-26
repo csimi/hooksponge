@@ -50,6 +50,7 @@ header img {
 
 .frame {
 	flex-grow: 1;
+	min-height: 0;
 }
 
 .events {
@@ -62,6 +63,7 @@ header img {
 
 .splash,
 .information {
+	overflow-y: auto;
 	width: 80%;
 }
 
