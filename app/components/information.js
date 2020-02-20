@@ -79,6 +79,19 @@ export default class Event extends Component {
 				}
 			}
 		})() : '(no body content)';
+		const response = message && message.response ? (() => {
+			if (!parseBody) {
+				return message.response;
+			}
+			
+			try {
+				const data = JSON.parse(message.response);
+				return <ObjectInspector data={data} expandLevel={expandLevel} />;
+			}
+			catch {
+				return message.response;
+			}
+		})() : '(no response)';
 		
 		return message ? (
 			<div className="information">
@@ -159,6 +172,10 @@ export default class Event extends Component {
 				<section>
 					<h2>Body (<a onClick={this.enableParse}>parse</a> - <a onClick={this.disableParse}>raw</a>)</h2>
 					<div className="body"><pre>{body}</pre></div>
+				</section>
+				<section>
+					<h2>Response (<a onClick={this.enableParse}>parse</a> - <a onClick={this.disableParse}>raw</a>)</h2>
+					<div className="response"><pre>{response}</pre></div>
 				</section>
 			</div>
 		) : (

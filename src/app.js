@@ -50,6 +50,7 @@ export async function getData () {
 
 export function saveData (sse) {
 	return async (req) => {
+		const response = responder(req);
 		const message = {
 			'protocol': req.protocol,
 			'hostname': req.hostname,
@@ -59,6 +60,7 @@ export function saveData (sse) {
 			'path': req.path,
 			'query': req.query,
 			'body': Buffer.isBuffer(req.body) ? req.body.toString('utf8') : '',
+			'response': JSON.stringify(response),
 		};
 		
 		cache
@@ -74,7 +76,7 @@ export function saveData (sse) {
 			})
 			.catch(console.error);
 		
-		return JSON.stringify(responder(req));
+		return JSON.stringify(response);
 	};
 }
 
