@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 RUN apk --no-cache add openssl
 
 COPY package.json npm-shrinkwrap.json /usr/src/app/
-RUN npm install --quiet
+RUN npm ci --quiet
 
 COPY . /usr/src/app
 RUN npm run build
@@ -22,7 +22,7 @@ WORKDIR /usr/src/app
 RUN apk --no-cache add openssl
 
 COPY package.json npm-shrinkwrap.json /usr/src/app/
-RUN npm install --quiet --only=production
+RUN npm ci --quiet --only=production
 
 COPY . /usr/src/app
 COPY --from=builder /usr/src/app/dist ./dist
