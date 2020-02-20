@@ -1,6 +1,6 @@
 {
   "name": "hooksponge",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Webhook trigger inspector",
   "main": "index.js",
   "scripts": {
