@@ -1,4 +1,4 @@
-[![image version](https://images.microbadger.com/badges/version/csimi/hooksponge.svg)](https://hub.docker.com/r/csimi/hooksponge)
+[![image version](https://img.shields.io/docker/v/csimi/hooksponge?sort=semver)](https://hub.docker.com/r/csimi/hooksponge)
 
 # About
 
